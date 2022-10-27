@@ -1,12 +1,12 @@
 data "aws_caller_identity" "current" {}
 
 module "permission_sets" {
-  source   = "./permission-sets"
+  source   = "./modules/permission-sets"
   for_each = { for item in var.associations : item.group => item }
 
   permission_sets = [
     {
-      name               = each.value.group
+      name               = length(each.value.group) < 33 ? "${each.value.group}" : substr("${each.value.group}", 33, length(each.value.group))
       policy_attachments = [each.value.policy]
 
       tags             = lookup(each.value, "tags", {})
@@ -21,23 +21,21 @@ module "permission_sets" {
 }
 
 module "sso_account_assignments" {
-  # source   = "./account-assignments"
-  source  = "cloudposse/sso/aws//modules/account-assignments"
-  version = "0.7.1"
+  source = "./modules/account-assignments"
 
   for_each = { for item in var.associations : item.group => item }
 
   account_assignments = [
     {
       account             = var.account_id == "" ? lookup(each.value, "account_id", data.aws_caller_identity.current.account_id) : var.account_id,
-      permission_set_arn  = module.permission_sets["${each.value.group}"].permission_sets["${each.value.group}"].arn,
-      permission_set_name = "${each.value.group}",
+      permission_set_arn  = module.permission_sets["${each.value.group}"].permission_sets[length(each.value.group) <= 33 ? "${each.value.group}" : substr("${each.value.group}", 33, length(each.value.group))].arn,
+      permission_set_name = length(each.value.group) < 33 ? "${each.value.group}" : substr("${each.value.group}", 33, length(each.value.group))
       principal_type      = "GROUP",
       principal_name      = "test"
     },
   ]
-}
 
-output "permission_sets" {
-  value = module.permission_sets["PSet-AWSMarketplaceFullAccess"].permission_sets["PSet-AWSMarketplaceFullAccess"].arn
+  depends_on = [
+    module.permission_sets
+  ]
 }
