@@ -1,5 +1,5 @@
 variable "associations" {
-  type = list(any)
+  type = any
 }
 
 variable "account_id" {
