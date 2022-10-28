@@ -27,7 +27,7 @@ module "sso_account_assignments" {
 
   account_assignments = [for item in lookup(each.value, "account_ids", [(var.account_id == "" ? data.aws_caller_identity.current.account_id : var.account_id)]) :
     {
-      account             = item, // lookup(each.value, "account_id", var.account_id == "" ? data.aws_caller_identity.current.account_id : var.account_id),
+      account             = item,
       permission_set_arn  = module.permission_sets["${each.value.group}"].permission_sets[length(each.value.group) <= 33 ? "${each.value.group}" : substr("${each.value.group}", 33, length(each.value.group))].arn,
       permission_set_name = length(each.value.group) < 33 ? "${each.value.group}" : substr("${each.value.group}", 33, 32)
       principal_type      = "GROUP",
