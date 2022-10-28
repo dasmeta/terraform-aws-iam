@@ -31,7 +31,7 @@ module "sso_account_assignments" {
       permission_set_arn  = module.permission_sets["${each.value.group}"].permission_sets[length(each.value.group) <= 33 ? "${each.value.group}" : substr("${each.value.group}", 33, length(each.value.group))].arn,
       permission_set_name = length(each.value.group) < 33 ? "${each.value.group}" : substr("${each.value.group}", 33, length(each.value.group))
       principal_type      = "GROUP",
-      principal_name      = "test"
+      principal_name      = "${each.value.group}"
     },
   ]
 
