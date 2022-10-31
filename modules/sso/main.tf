@@ -7,7 +7,7 @@ module "permission_sets" {
   permission_sets = [
     {
       name               = length(each.value.group) < 33 ? "${each.value.group}" : substr("${each.value.group}", 33, 32)
-      policy_attachments = [each.value.policy]
+      policy_attachments = each.value.policy
 
       tags             = lookup(each.value, "tags", {})
       description      = lookup(each.value, "description", null)
