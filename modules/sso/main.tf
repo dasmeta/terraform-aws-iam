@@ -7,7 +7,7 @@ module "permission_sets" {
   permission_sets = [
     {
       name               = length(each.value.group) < 33 ? "${each.value.group}" : substr("${each.value.group}", 33, 32)
-      policy_attachments = each.value.policy
+      policy_attachments = lookup(each.value, "policy", [])
 
       tags             = lookup(each.value, "tags", {})
       description      = lookup(each.value, "description", null)
@@ -15,7 +15,12 @@ module "permission_sets" {
       inline_policy    = lookup(each.value, "inline_policy", "")
       session_duration = lookup(each.value, "session_duration", "")
 
-      customer_managed_policy_attachments = lookup(each.value, "customer_managed_policy_attachments", [])
+      customer_managed_policy_attachments = [for item in lookup(each.value, "custom_policy", []) :
+        {
+          name = item
+          path = "/"
+        }
+      ]
     }
   ]
 }
