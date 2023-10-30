@@ -1,15 +1,15 @@
 variable "name" {
-    type = string    
+  type = string
 }
 
 variable "description" {
-    type = string
+  type = string
 }
 
 variable "policy" {
-    type = any
+  type = any
 }
 
 variable "trust_policy" {
-    type = any
+  type = any
 }
