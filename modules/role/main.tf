@@ -8,7 +8,7 @@ resource "aws_iam_policy" "this" {
 resource "aws_iam_role" "aws-role" {
   name = var.name
 
-  assume_role_policy = var.trust_policy
+  assume_role_policy = var.trust-relationship
 }
 
 resource "aws_iam_role_policy_attachment" "AWSRole" {

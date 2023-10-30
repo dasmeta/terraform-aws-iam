@@ -10,6 +10,6 @@ variable "policy" {
   type = any
 }
 
-variable "trust_policy" {
+variable "trust-relationship" {
   type = any
 }

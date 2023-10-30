@@ -30,7 +30,7 @@ No modules.
 | <a name="input_description"></a> [description](#input\_description) | n/a | `string` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | n/a | `string` | n/a | yes |
 | <a name="input_policy"></a> [policy](#input\_policy) | n/a | `any` | n/a | yes |
-| <a name="input_trust_policy"></a> [trust\_policy](#input\_trust\_policy) | n/a | `any` | n/a | yes |
+| <a name="input_trust-relationship"></a> [trust-relationship](#input\_trust-relationship) | n/a | `any` | n/a | yes |
 
 ## Outputs
 
