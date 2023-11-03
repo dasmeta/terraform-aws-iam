@@ -16,12 +16,10 @@ jobs:
     strategy:
       matrix:
         path:
-          - modules/sso
-          - modules/sso/modules/account-assignments
-          - modules/sso/modules/permission-sets
+          - /
      
     steps:
-    - uses: dasmeta/reusable-actions-workflows/checkov@main
+    - uses: dasmeta/reusable-actions-workflows/checkov@4.2.0
       with:
         fetch-depth: 0
         directory: ${{ matrix.path }}
