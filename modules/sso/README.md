@@ -17,15 +17,13 @@ module "sso_setup" {
 
   associations = [
     {
-      group  = "AWSMarketplaceFullAccess"
-      policy = "arn:aws:iam::aws:policy/AWSMarketplaceFullAccess" s"
-      // You can set AWS account id (default is current account)
-      account_id = ""
+      group  = "Administrators", //Group name
+      policy = ["arn:aws:iam::aws:policy/AdministratorAccess"]
     },
     {
-      group  = "AmazonGlacierReadOnlyAccess"
-      policy = "arn:aws:iam::aws:policy/AmazonGlacierReadOnlyAccess"
-    },
+      group  = "Developers", //Group name
+      policy = ["arn:aws:iam::aws:policy/ReadOnlyAccess"]
+    }
   ]
 }
 ```
