@@ -19,7 +19,7 @@ jobs:
           - modules/sso
           - modules/sso/modules/account-assignments
           - modules/sso/modules/permission-sets
-     
+
     steps:
     - uses: dasmeta/reusable-actions-workflows/checkov@main
       with:

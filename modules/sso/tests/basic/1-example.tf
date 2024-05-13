@@ -1,5 +1,6 @@
 module "this" {
   source = "../.."
+
   associations = [
     {
       group  = "AdministratorAccess",
