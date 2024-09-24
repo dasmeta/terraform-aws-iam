@@ -29,7 +29,6 @@ module "test" {
         identifiers = ["arn:aws:iam::<account-id>:oidc-provider/oidc.eks.eu-central-1.amazonaws.com/id/<oidc-id>"]
       },
       actions = ["sts:AssumeRoleWithWebIdentity"]
-      #   condition = {}
       conditions = [{
         type  = "StringEquals"
         key   = "oidc.eks.eu-central-1.amazonaws.com/id/<oidc-id>:aud"
