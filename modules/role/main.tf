@@ -49,7 +49,7 @@ resource "aws_iam_role" "aws-role" {
   assume_role_policy = data.aws_iam_policy_document.assume_role_policy.json
 }
 
-resource "aws_iam_role_policy_attachment" "AWSRole" {
+resource "aws_iam_role_policy_attachment" "awsrole" {
   policy_arn = aws_iam_policy.this.arn
   role       = aws_iam_role.aws-role.name
 }
