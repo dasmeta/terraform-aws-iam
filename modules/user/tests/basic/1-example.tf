@@ -1,12 +1,16 @@
 module "iam-user" {
-  source = "../.."
+  source        = "../.."
+  username      = "sample-user"
+  create_policy = true
 
-  name        = "sample-user"
-  description = "Test user"
-
-  policy = [{
-    actions   = ["ec2:*"]
-    resources = ["*"]
-    }
-  ]
+  policy = jsonencode({
+    "Version" : "2012-10-17",
+    "Statement" : [
+      {
+        "Effect" : "Allow",
+        "Action" : "ec2:*",
+        "Resource" : "*"
+      }
+    ]
+  })
 }
