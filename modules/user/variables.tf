@@ -46,12 +46,6 @@ variable "policy" {
   description = "AWS role assigne policy"
 }
 
-# variable "policy" {
-#   description = "IAM policy resource"
-#   type        = any
-#   default     = null
-# }
-
 variable "create_policy" {
   description = "Whether create a policy or not."
   type        = bool
