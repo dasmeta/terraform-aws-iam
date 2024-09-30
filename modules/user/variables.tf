@@ -36,10 +36,21 @@ variable "pgp_key" {
 }
 
 variable "policy" {
-  description = "IAM policy resource"
-  type        = any
-  default     = null
+  type = list(object({
+    effect     = optional(string, "Allow")
+    actions    = list(string)
+    resources  = list(string)
+    principals = optional(any, [])
+    conditions = optional(any, [])
+  }))
+  description = "AWS role assigne policy"
 }
+
+# variable "policy" {
+#   description = "IAM policy resource"
+#   type        = any
+#   default     = null
+# }
 
 variable "create_policy" {
   description = "Whether create a policy or not."
