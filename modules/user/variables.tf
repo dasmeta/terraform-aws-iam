@@ -40,10 +40,14 @@ variable "policy" {
     effect     = optional(string, "Allow")
     actions    = list(string)
     resources  = list(string)
-    principals = optional(any, [])
-    conditions = optional(any, [])
+    conditions = optional(list(object({
+      test  = string
+      variable   = string
+      values = list(string)
+    })), [])
   }))
   description = "AWS role assigne policy"
+  default = []
 }
 
 variable "create_policy" {

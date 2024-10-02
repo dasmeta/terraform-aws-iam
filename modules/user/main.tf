@@ -21,11 +21,24 @@ resource "aws_iam_user_policy_attachment" "user-attach" {
 }
 
 data "aws_iam_policy_document" "policy" {
+  count = length(var.policy) > 0 ? 1 :0
+
   dynamic "statement" {
     for_each = var.policy
     content {
+      effect = statement.value.effect
       actions   = statement.value.actions
       resources = statement.value.resources
+
+      dynamic "condition" {
+        for_each = length(statement.value.conditions) > 0 ? statement.value.conditions : []
+
+        content {
+          test     = condition.value.test  # Condition type (e.g., StringEquals)
+          variable = condition.value.variable   # Condition variable (e.g., "SAML:aud")
+          values   = condition.value.values # Condition values (list of strings)
+        }
+      }
     }
   }
 }
@@ -35,5 +48,5 @@ resource "aws_iam_user_policy" "iam_user_policy" {
   name       = "policy-${var.username}"
   user       = var.username
   depends_on = [module.iam_user]
-  policy     = data.aws_iam_policy_document.policy.json
+  policy     = data.aws_iam_policy_document.policy.0.json
 }
