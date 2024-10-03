@@ -49,9 +49,3 @@ variable "policy" {
   description = "AWS role assigne policy"
   default = []
 }
-
-variable "create_policy" {
-  description = "Whether create a policy or not."
-  type        = bool
-  default     = false
-}

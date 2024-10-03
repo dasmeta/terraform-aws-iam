@@ -44,7 +44,7 @@ data "aws_iam_policy_document" "policy" {
 }
 
 resource "aws_iam_user_policy" "iam_user_policy" {
-  count      = var.create_policy && var.create_user ? 1 : 0
+  count      = length(var.policy) > 0 && var.create_user ? 1 : 0
   name       = "policy-${var.username}"
   user       = var.username
   depends_on = [module.iam_user]
