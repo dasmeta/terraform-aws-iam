@@ -37,15 +37,15 @@ variable "pgp_key" {
 
 variable "policy" {
   type = list(object({
-    effect     = optional(string, "Allow")
-    actions    = list(string)
-    resources  = list(string)
+    effect    = optional(string, "Allow")
+    actions   = list(string)
+    resources = list(string)
     conditions = optional(list(object({
-      test  = string
-      variable   = string
-      values = list(string)
+      test     = string
+      variable = string
+      values   = list(string)
     })), [])
   }))
   description = "AWS role assigne policy"
-  default = []
+  default     = []
 }
