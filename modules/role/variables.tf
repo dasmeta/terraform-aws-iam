@@ -6,6 +6,7 @@ variable "name" {
 variable "description" {
   type        = string
   description = "Role description"
+  default     = ""
 }
 
 variable "policy" {
