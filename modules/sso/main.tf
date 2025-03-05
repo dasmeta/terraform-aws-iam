@@ -15,7 +15,7 @@ module "permission_sets" {
       inline_policy    = lookup(each.value, "inline_policy", "")
       session_duration = lookup(each.value, "session_duration", "")
 
-      customer_managed_policy_attachments = [for item in lookup(each.value, "custom_policy", []) :
+      customer_managed_policy_attachments = [for item in coalesce(lookup(each.value, "custom_policy", []), []) :
         {
           name = item
           path = "/"
@@ -41,6 +41,21 @@ module "sso_account_assignments" {
   ]
 
   depends_on = [
-    module.permission_sets
+    module.permission_sets,
+    module.groups
   ]
+}
+
+module "users" {
+  source = "./modules/users"
+
+  users = var.users
+
+  depends_on = [module.groups]
+}
+
+module "groups" {
+  source = "./modules/groups"
+
+  groups = local.all_groups
 }

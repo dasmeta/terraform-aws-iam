@@ -77,8 +77,8 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_description"></a> [description](#input\_description) | Role description | `string` | `""` | no |
 | <a name="input_name"></a> [name](#input\_name) | Role name | `string` | n/a | yes |
-| <a name="input_policy"></a> [policy](#input\_policy) | AWS role assigne policy | <pre>list(object({<br>    actions   = list(string)<br>    resources = list(string)<br>  }))</pre> | n/a | yes |
-| <a name="input_trust_relationship"></a> [trust\_relationship](#input\_trust\_relationship) | AWS role trust relationship | <pre>list(object({<br>    effect     = optional(string, "Allow") # Effect of the policy (Allow or Deny)<br>    actions    = list(string)              # Actions like sts:AssumeRole<br>    principals = any                       # Principals (e.g., AWS, Service, Federated)<br>    conditions = optional(any, [])         # Optional conditions for assume role<br>  }))</pre> | n/a | yes |
+| <a name="input_policy"></a> [policy](#input\_policy) | AWS role assigne policy | <pre>list(object({<br/>    actions   = list(string)<br/>    resources = list(string)<br/>  }))</pre> | n/a | yes |
+| <a name="input_trust_relationship"></a> [trust\_relationship](#input\_trust\_relationship) | AWS role trust relationship | <pre>list(object({<br/>    effect     = optional(string, "Allow") # Effect of the policy (Allow or Deny)<br/>    actions    = list(string)              # Actions like sts:AssumeRole<br/>    principals = any                       # Principals (e.g., AWS, Service, Federated)<br/>    conditions = optional(any, [])         # Optional conditions for assume role<br/>  }))</pre> | n/a | yes |
 
 ## Outputs
 

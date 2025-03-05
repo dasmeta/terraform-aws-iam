@@ -42,23 +42,29 @@ No requirements.
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_groups"></a> [groups](#module\_groups) | ./modules/groups | n/a |
 | <a name="module_permission_sets"></a> [permission\_sets](#module\_permission\_sets) | ./modules/permission-sets | n/a |
 | <a name="module_sso_account_assignments"></a> [sso\_account\_assignments](#module\_sso\_account\_assignments) | ./modules/account-assignments | n/a |
+| <a name="module_users"></a> [users](#module\_users) | ./modules/users | n/a |
 
 ## Resources
 
 | Name | Type |
 |------|------|
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
+| [aws_ssoadmin_instances.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ssoadmin_instances) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_account_id"></a> [account\_id](#input\_account\_id) | n/a | `string` | `""` | no |
-| <a name="input_associations"></a> [associations](#input\_associations) | n/a | `any` | n/a | yes |
+| <a name="input_associations"></a> [associations](#input\_associations) | n/a | <pre>list(object({<br/>    group             = optional(string)<br/>    policy            = optional(list(string))<br/>    tags              = optional(map(any))<br/>    description       = optional(string)<br/>    relay_state       = optional(string)<br/>    inline_policy     = optional(string)<br/>    session_duration  = optional(string)<br/>    custom_policy     = optional(list(any))<br/>    account_id        = optional(string)<br/>    group_description = optional(string)<br/>  }))</pre> | n/a | yes |
+| <a name="input_users"></a> [users](#input\_users) | Map describing users and their groups | <pre>list(object({<br/>    user_name    = string # should be the email of the user<br/>    groups       = optional(list(string), [])<br/>    display_name = optional(string, null)<br/>    name = object({<br/>      given_name  = string<br/>      family_name = string<br/>    })<br/>    })<br/>  )</pre> | `[]` | no |
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_memberships"></a> [memberships](#output\_memberships) | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
