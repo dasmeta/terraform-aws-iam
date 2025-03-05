@@ -40,6 +40,6 @@ module "test-users" {
   ]
 }
 
-# output "module_outs" {
-#   value = module.test-users.users
-# }
+output "module_outs" {
+  value = module.test-users.users
+}

@@ -18,11 +18,6 @@ variable "account_id" {
   default = ""
 }
 
-variable "enforce_mfa" {
-  type    = bool
-  default = true
-}
-
 variable "users" {
   type = list(object({
     user_name    = string # should be the email of the user

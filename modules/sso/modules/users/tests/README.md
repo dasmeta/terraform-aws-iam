@@ -27,5 +27,7 @@ No inputs.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_module_outs"></a> [module\_outs](#output\_module\_outs) | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
