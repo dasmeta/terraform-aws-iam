@@ -51,8 +51,6 @@ No requirements.
 
 | Name | Type |
 |------|------|
-| [aws_iam_policy.enforce_mfa](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
-| [aws_identitystore_group_membership.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/identitystore_group_membership) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 | [aws_ssoadmin_instances.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ssoadmin_instances) | data source |
 
@@ -61,9 +59,9 @@ No requirements.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_account_id"></a> [account\_id](#input\_account\_id) | n/a | `string` | `""` | no |
-| <a name="input_associations"></a> [associations](#input\_associations) | n/a | `any` | n/a | yes |
+| <a name="input_associations"></a> [associations](#input\_associations) | n/a | <pre>list(object({<br/>    group             = optional(string)<br/>    policy            = optional(list(string))<br/>    tags              = optional(map(any))<br/>    description       = optional(string)<br/>    relay_state       = optional(string)<br/>    inline_policy     = optional(string)<br/>    session_duration  = optional(string)<br/>    custom_policy     = optional(list(any))<br/>    account_id        = optional(string)<br/>    group_description = optional(string)<br/>  }))</pre> | n/a | yes |
 | <a name="input_enforce_mfa"></a> [enforce\_mfa](#input\_enforce\_mfa) | n/a | `bool` | `true` | no |
-| <a name="input_groups_users"></a> [groups\_users](#input\_groups\_users) | n/a | <pre>list(object({<br/>    group_name        = string<br/>    group_description = optional(string, null)<br/>    users = list(object({<br/>      user_name    = string # should be the email of the user<br/>      display_name = string<br/>      name = optional(object({<br/>        given_name  = string<br/>        family_name = string<br/>      }), null)<br/>    }))<br/>  }))</pre> | n/a | yes |
+| <a name="input_users"></a> [users](#input\_users) | Map describing users and their groups | <pre>list(object({<br/>    user_name    = string # should be the email of the user<br/>    groups       = optional(list(string), [])<br/>    display_name = optional(string, null)<br/>    name = object({<br/>      given_name  = string<br/>      family_name = string<br/>    })<br/>    })<br/>  )</pre> | `[]` | no |
 
 ## Outputs
 

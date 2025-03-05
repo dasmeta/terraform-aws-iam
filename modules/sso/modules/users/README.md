@@ -22,18 +22,18 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [aws_identitystore_group_membership.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/identitystore_group_membership) | resource |
 | [aws_identitystore_user.users](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/identitystore_user) | resource |
+| [aws_identitystore_groups.groups](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/identitystore_groups) | data source |
 | [aws_ssoadmin_instances.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ssoadmin_instances) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_users"></a> [users](#input\_users) | Map of SSO users | <pre>list(object({<br/>    user_name    = string<br/>    display_name = string<br/>    name = object({<br/>      family_name = string<br/>      given_name  = string<br/>    })<br/>  }))</pre> | `[]` | no |
+| <a name="input_users"></a> [users](#input\_users) | Map describing users and their groups | <pre>list(object({<br/>    user_name    = string # should be the email of the user<br/>    groups       = optional(list(string), [])<br/>    display_name = optional(string, null)<br/>    name = object({<br/>      given_name  = string<br/>      family_name = string<br/>    })<br/>    })<br/>  )</pre> | `[]` | no |
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| <a name="output_users"></a> [users](#output\_users) | n/a |
+No outputs.
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

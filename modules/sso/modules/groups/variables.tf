@@ -1,7 +1,7 @@
 variable "groups" {
   type = list(object({
     name        = string
-    description = string
+    description = optional(string, null)
   }))
   description = "list of groups"
   default     = []

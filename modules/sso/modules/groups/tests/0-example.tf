@@ -5,6 +5,9 @@ module "groups" {
     {
       name        = "Test group1",
       description = "Group for testing"
+    },
+    {
+      name = "test group",
     }
   ]
 }

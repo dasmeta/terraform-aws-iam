@@ -29,7 +29,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_groups"></a> [groups](#input\_groups) | list of groups | <pre>list(object({<br/>    name        = string<br/>    description = string<br/>  }))</pre> | `[]` | no |
+| <a name="input_groups"></a> [groups](#input\_groups) | list of groups | <pre>list(object({<br/>    name        = string<br/>    description = optional(string, null)<br/>  }))</pre> | `[]` | no |
 
 ## Outputs
 
