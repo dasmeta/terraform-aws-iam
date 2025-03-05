@@ -33,7 +33,7 @@ No requirements.
 | <a name="input_console"></a> [console](#input\_console) | Whether to create IAM user login profile | `bool` | `true` | no |
 | <a name="input_create_user"></a> [create\_user](#input\_create\_user) | Whether to create the IAM user | `bool` | `true` | no |
 | <a name="input_pgp_key"></a> [pgp\_key](#input\_pgp\_key) | Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:username`. Used to encrypt password and access key. `pgp_key` is required when `create_iam_user_login_profile` is set to `true` | `string` | `""` | no |
-| <a name="input_policy"></a> [policy](#input\_policy) | AWS role assigne policy | <pre>list(object({<br>    effect    = optional(string, "Allow")<br>    actions   = list(string)<br>    resources = list(string)<br>    conditions = optional(list(object({<br>      test     = string<br>      variable = string<br>      values   = list(string)<br>    })), [])<br>  }))</pre> | `[]` | no |
+| <a name="input_policy"></a> [policy](#input\_policy) | AWS role assigne policy | <pre>list(object({<br/>    effect    = optional(string, "Allow")<br/>    actions   = list(string)<br/>    resources = list(string)<br/>    conditions = optional(list(object({<br/>      test     = string<br/>      variable = string<br/>      values   = list(string)<br/>    })), [])<br/>  }))</pre> | `[]` | no |
 | <a name="input_policy_attachment"></a> [policy\_attachment](#input\_policy\_attachment) | The list of ARN-s of the policy you want to apply | `list(string)` | `[]` | no |
 | <a name="input_username"></a> [username](#input\_username) | Desired name for the IAM user | `string` | n/a | yes |
 

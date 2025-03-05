@@ -31,7 +31,7 @@ data "aws_iam_policy_document" "policy" {
       resources = statement.value.resources
 
       dynamic "condition" {
-        for_each = length(statement.value.conditions) > 0 ? statement.value.conditions : []
+        for_each = length(statement.value.condition) > 0 ? statement.value.conditions : []
 
         content {
           test     = condition.value.test     # Condition type (e.g., StringEquals)
